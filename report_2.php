@@ -26,8 +26,7 @@ array('label' => 'Dependencies', 'type' => 'string') // null
 foreach($cons as $r) {
   $temp = array();
   $days = (int) $r['duracion'];
- 
-    $day = "daysToMilliseconds(".$days.")"; 
+  $day = "daysToMilliseconds(".$days.")"; 
    
   
   // Values of the each slice
@@ -44,7 +43,7 @@ foreach($cons as $r) {
 $table['rows'] = $rows;
 // convert data into JSON format
 $jsonTable_act = json_encode($table);
-echo $jsonTable_act;
+//echo $jsonTable_act;
          
 ?>
 
