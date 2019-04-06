@@ -25,13 +25,15 @@ array('label' => 'Dependencies', 'type' => 'string') // null
 /* Extract the information from $result */
 foreach($cons as $r) {
   $temp = array();
+  $days = (int) $r['duracion'];
+  $day = daysToMilliseconds($days);
   // Values of the each slice
   $temp[] = array('v' =>  $r['cenco']); 
   $temp[] = array('v' =>  $r['resp']); 
   $temp[] = array('v' =>  $r['proy']); 
   $temp[] = array('v' =>  'Date('.$r['inicio'].')'); 
   $temp[] = array('v' =>  'Date('.$r['fin'].')'); 
-  $temp[] = array('v' => (int) $r['duracion']); 
+  $temp[] = array('v' => $day); 
   $temp[] = array('v' => 100); 
   $temp[] = array('v' => NULL);
   $rows[] = array('c' => $temp);
@@ -39,12 +41,12 @@ foreach($cons as $r) {
 $table['rows'] = $rows;
 // convert data into JSON format
 $jsonTable_act = json_encode($table);
-//echo $jsonTable_act;
+echo $jsonTable_act;
          
 ?>
 
 
-<html>
+<html lang="es">
   <head>
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
@@ -54,6 +56,9 @@ $jsonTable_act = json_encode($table);
     google.charts.load('current', {'packages':['gantt']});
     google.charts.setOnLoadCallback(drawChart);
 
+    function daysToMilliseconds(days) {
+      return days * 24 * 60 * 60 * 1000;
+    }
    
 
     function drawChart() {
