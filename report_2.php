@@ -26,7 +26,10 @@ array('label' => 'Dependencies', 'type' => 'string') // null
 foreach($cons as $r) {
   $temp = array();
   $days = (int) $r['duracion'];
-  $day = daysToMilliseconds($days);
+ 
+    $day = "daysToMilliseconds(".$days.")"; 
+   
+  
   // Values of the each slice
   $temp[] = array('v' =>  $r['cenco']); 
   $temp[] = array('v' =>  $r['resp']); 
