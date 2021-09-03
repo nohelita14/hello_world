@@ -1,7 +1,5 @@
 <?php 
      if( ! ini_get('date.timezone') ) { date_default_timezone_set('America/Santiago'); } 
-
-     require ("../../main_app/coor/zipfile.php");
      require('../../pdf/fpdf/fpdf.php');
      require('../conexion.php');
      $mysqli->set_charset("utf8");
